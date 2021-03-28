@@ -314,3 +314,171 @@ Task List Item Marker는 [, 공백 또는 x(X), ]로 구성되어 있습니다.
 
 Task List Item은 중첩될 수도 있습니다.
   
+# Strikethrough
+
+## Code EX_1
+
+    <p><del>Hi</del> Hello, world!</p>
+ 
+이 코드의 실행 결과입니다.
+<p><del>Hi</del> Hello, world!</p>
+
+Strikethrough text는 two tildes (~)로 묶인 텍스트입니다.
+
+## Code EX_2
+
+    <p>This ~~has a</p>
+    <p>new paragraph~~.</p>
+    
+이 코드의 실행 결과입니다.
+<p>This ~~has a</p>
+<p>new paragraph~~.</p>
+
+# Autolinks
+
+## Code EX_1
+
+    <p><a href="http://www.commonmark.org">www.commonmark.org</a></p>
+
+이 코드의 실행 결과입니다.
+<p><a href="http://www.commonmark.org">www.commonmark.org</a></p>
+
+기본적으로 이렇게 씁니다.
+
+## Code EX_2
+
+    <p>Visit <a href="http://www.commonmark.org/help">www.commonmark.org/help</a> for more information.</p>
+
+이 코드의 실행 결과입니다.
+<p>Visit <a href="http://www.commonmark.org/help">www.commonmark.org/help</a> for more information.</p>
+
+## Code EX_3
+
+    <p>Visit <a href="http://www.commonmark.org">www.commonmark.org</a>.</p>
+    <p>Visit <a href="http://www.commonmark.org/a.b">www.commonmark.org/a.b</a>.</p>
+    
+이 코드의 실행 결과입니다.
+<p>Visit <a href="http://www.commonmark.org">www.commonmark.org</a>.</p>
+<p>Visit <a href="http://www.commonmark.org/a.b">www.commonmark.org/a.b</a>.</p>
+
+Trailing punctuation (specifically, ?, !, ., ,, :, *, _, and ~)는 autolink의 일부로 간주되지 않는다.
+
+## Code EX_4
+
+    <p><a href="http://www.google.com/search?q=Markup+(business)">www.google.com/search?q=Markup+(business)</a></p>
+    <p><a href="http://www.google.com/search?q=Markup+(business)">www.google.com/search?q=Markup+(business)</a>))</p>
+    <p>(<a href="http://www.google.com/search?q=Markup+(business)">www.google.com/search?q=Markup+(business)</a>)</p>
+    <p>(<a href="http://www.google.com/search?q=Markup+(business)">www.google.com/search?q=Markup+(business)</a></p>
+    
+이 코드의 실행 결과입니다.
+<p><a href="http://www.google.com/search?q=Markup+(business)">www.google.com/search?q=Markup+(business)</a></p>
+<p><a href="http://www.google.com/search?q=Markup+(business)">www.google.com/search?q=Markup+(business)</a>))</p>
+<p>(<a href="http://www.google.com/search?q=Markup+(business)">www.google.com/search?q=Markup+(business)</a>)</p>
+<p>(<a href="http://www.google.com/search?q=Markup+(business)">www.google.com/search?q=Markup+(business)</a></p>
+
+여는 괄호보다 닫히는 괄호가 더 많을 경우 자동 링크에 포함되지 않는 괄호를 빼버린다.
+
+## Code EX_5
+
+    <p><a href="http://www.google.com/search?q=(business))+ok">www.google.com/search?q=(business))+ok</a></p>
+    
+이 코드의 실행 결과입니다.
+<p><a href="http://www.google.com/search?q=(business))+ok">www.google.com/search?q=(business))+ok</a></p>
+
+Code EX_4는 autolink의 마지막이 )로 끝날 때에만 적용됩니다.
+
+## Code EX_6
+
+    <p><a href="http://www.google.com/search?q=commonmark&amp;hl=en">www.google.com/search?q=commonmark&amp;hl=en</a></p>
+    <p><a href="http://www.google.com/search?q=commonmark">www.google.com/search?q=commonmark</a>&amp;hl;</p>
+    
+이 코드의 실행 결과입니다.
+<p><a href="http://www.google.com/search?q=commonmark&amp;hl=en">www.google.com/search?q=commonmark&amp;hl=en</a></p>
+<p><a href="http://www.google.com/search?q=commonmark">www.google.com/search?q=commonmark</a>&amp;hl;</p>
+
+자동 링크가 세미콜론(;)으로 끝나는 경우 엔티티 참조와 유사한지, 이전 텍스트가 하나 이상의 영숫자 뒤에 있는지 확인합니다.  
+만약 그렇다면 자동 링크에서 제외됩니다.
+
+## Code EX_7
+
+    <p><a href="http://www.commonmark.org/he">www.commonmark.org/he</a>&lt;lp</p>
+    
+ 이 코드의 실행 결과입니다.
+ <p><a href="http://www.commonmark.org/he">www.commonmark.org/he</a>&lt;lp</p>  
+ 
+ <이 나오면 즉시 autolink에서 제외됩니다.
+ 
+## Code EX_8
+
+    <p><a href="http://commonmark.org">http://commonmark.org</a></p>
+    <p>(Visit <a href="https://encrypted.google.com/search?q=Markup+(business)">https://encrypted.google.com/search?q=Markup+(business)</a>)</p>
+    
+이 코드의 실행 결과입니다.
+<p><a href="http://commonmark.org">http://commonmark.org</a></p>
+<p>(Visit <a href="https://encrypted.google.com/search?q=Markup+(business)">https://encrypted.google.com/search?q=Markup+(business)</a>)</p>
+
+## Code EX_9
+
+    <p><a href="mailto:foo@bar.baz">foo@bar.baz</a></p>
+    
+이 코드의 실행 결과입니다.
+<p><a href="mailto:foo@bar.baz">foo@bar.baz</a></p>
+
+Extended email autolink Rules  
+영숫자 또는 ., -, _ 또는 +인 하나 이상의 문자입니다.  
+@ 기호입니다.  
+영숫자 또는 - 또는 _, 마침표(.)로 구분된 하나 이상의 문자입니다.  
+적어도 하나의 마침표가 있어야 합니다.  
+마지막 문자는 - 또는 _ 중 하나일 수 없습니다.
+
+## Code EX_10
+
+    <p>hello@mail+xyz.example isn't valid, but <a href="mailto:hello+xyz@mail.example">hello+xyz@mail.example</a> is.</p>
+    
+이 코드의 실행 결과입니다.
+<p>hello@mail+xyz.example isn't valid, but <a href="mailto:hello+xyz@mail.example">hello+xyz@mail.example</a> is.</p>
+
++는 @의 뒤에 올 수 없고, 앞에만 올 수 있습니다.
+
+## Code EX_11
+
+    <p><a href="mailto:a.b-c_d@a.b">a.b-c_d@a.b</a></p>
+    <p><a href="mailto:a.b-c_d@a.b">a.b-c_d@a.b</a>.</p>
+    <p>a.b-c_d@a.b-</p>
+    <p>a.b-c_d@a.b_</p>
+    
+이 코드의 실행 결과입니다.
+<p><a href="mailto:a.b-c_d@a.b">a.b-c_d@a.b</a></p>
+<p><a href="mailto:a.b-c_d@a.b">a.b-c_d@a.b</a>.</p>
+<p>a.b-c_d@a.b-</p>
+<p>a.b-c_d@a.b_</p>
+
+. , _ , -은 @ 앞뒤에 모두 올 수 있지만, .만이 이메일 주소의 맨 뒤에 올 수 있습니다.
+
+# Disallowed Raw HTML
+
+\<title>
+\<textarea>
+\<style>
+\<xmp>
+\<iframe>
+\<noembed>
+\<noframes>
+\<script>
+\<plaintext>
+
+이 HTML 태그들은 렌더링 시 필터링을 거칩니다.  
+즉, <이 \&lt;로 필터링됩니다.
+
+## Code EX_1
+
+    <p><strong> &lt;title> &lt;style> <em></p>
+    <blockquote>
+      &lt;xmp> is disallowed.  &lt;XMP> is also disallowed.
+    </blockquote>
+   
+이 코드의 실행 결과입니다.
+<p><strong> &lt;title> &lt;style> <em></p>
+<blockquote>
+  &lt;xmp> is disallowed.  &lt;XMP> is also disallowed.
+</blockquote>
